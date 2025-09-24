@@ -35,12 +35,11 @@ function App() {
         });
 
         socket.on("alert:triggered", (data) => {
+            setAlerts((prev) => prev.map((a) => a._id === data.alertId ? { ...a, triggered: data.triggered, triggeredAt: data.triggeredAt } : a));
             alert(`ALERT TRIGGERED: ${data.coinId} is ${data.condition} ${data.threshold}, current price: ${data.price}`);
         });
 
-        return () => {
-            socket.disconnect();
-        };
+        return () => { socket.disconnect(); };
     }, []);
 
     const subscribeCoin = () => {
@@ -160,7 +159,7 @@ function App() {
             <div style={{ marginTop: "20px" }}>
                 <h3>Alerts</h3>
                 <ul>
-                    {alerts.map((alert, i) => <li key={i}> {alert.coinId} {alert.conditionType} {alert.threshold} </li>)}
+                    {alerts.map((alert, i) => <li key={i}> {alert.coinId} {alert.conditionType} {alert.threshold} {alert.triggered ? ('TRIGGERED AT:' + alert.triggeredAt): 'NOT TRIGGERED'} </li>)}
                 </ul>
             </div>
         </div>

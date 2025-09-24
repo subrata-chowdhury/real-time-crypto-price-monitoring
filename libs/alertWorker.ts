@@ -44,6 +44,8 @@ export function initAlertWorker() {
                     condition: alert.conditionType,
                     threshold: alert.threshold,
                     price: latest.price,
+                    triggered: alert.triggered,
+                    triggeredAt: alert.triggeredAt,
                 });
 
                 console.log(`Alert ${alert._id} triggered for ${coinId}`);

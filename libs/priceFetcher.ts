@@ -11,6 +11,7 @@ export function initPriceFetcher() {
         try {
             const ids = COINS.join(",");
             const url = `${COINGECKO}/simple/price?ids=${ids}&vs_currencies=${CURRENCY}`;
+            console.log("Fetching price details at", new Date().toLocaleTimeString());
             const resp = await fetch(url);
             const data: Record<string, Record<string, number>> = await resp.json();
             for (const coinId of Object.keys(data)) {

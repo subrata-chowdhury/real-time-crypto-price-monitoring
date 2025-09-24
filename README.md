@@ -9,6 +9,7 @@ Tech Stack Used:
 Run these Commands to run the React Client:  
 ```bash 
 cd react-client-for-testing  
+npm i  
 npm run dev
 ```
 
