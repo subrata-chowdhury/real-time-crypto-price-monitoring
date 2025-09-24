@@ -117,9 +117,10 @@ function App() {
                             placeholder="User ID"
                             value={alertForm.userId}
                             onChange={(e) => setAlertForm({ ...alertForm, userId: e.target.value })}
+                            disabled
                             required
                         />
-                        <small style={{ lineHeight: 1, fontWeight: 'bold', color: 'rgba(0,0,0,0.5)', marginTop: '2px' }}>used socket io id as userid for testing it can be replaced with userid when auth is added</small>
+                        <small style={{ lineHeight: 1, fontWeight: 'bold', color: 'rgba(0,0,0,0.5)', marginTop: '2px' }}>used socket id as userid for testing, it can be replaced with userid when auth is added</small>
                     </div>
                     <input
                         type="text"

@@ -16,7 +16,6 @@ export const priceCache = {
         const key = `price:${coinId}:${currency}`;
         const val = JSON.stringify({ price, lastUpdated: Date.now() });
         await redis.set(key, val, "EX", 30);
-        // also push to a stream/list for last N points if needed
         await redis.lpush(`price_history:${coinId}:${currency}`, val);
         await redis.ltrim(`price_history:${coinId}:${currency}`, 0, 99); // keeping last 100
         emitter.emit("price", coinId, { price, lastUpdated: Date.now() });
